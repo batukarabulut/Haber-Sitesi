@@ -1,12 +1,14 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    // Mobile menu toggle functionality
+    // Mobil menü toggle fonksiyonu
     const mobileMenuToggle = document.getElementById("mobileMenuToggle");
     const mainNavbar = document.getElementById("mainNavbar");
     
-    mobileMenuToggle.addEventListener("click", () => {
-        mobileMenuToggle.classList.toggle("active");
-        mainNavbar.classList.toggle("active");
-    });
+    if (mobileMenuToggle && mainNavbar) {
+        mobileMenuToggle.addEventListener("click", () => {
+            mobileMenuToggle.classList.toggle("active");
+            mainNavbar.classList.toggle("active");
+        });
+    }
     
     const ul = document.querySelector(".navbarEcon ul");
 
@@ -256,6 +258,4 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error("Mock hava durumu hatası:", error);
     }
 
-
-
-})
+});

@@ -11,8 +11,9 @@ body {
   background-color: white;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  position: relative;
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
@@ -25,6 +26,8 @@ body {
   margin-right: 20px;
   cursor: pointer;
   z-index: 1001;
+  position: absolute;
+  left: 15px;
 }
 
 .mobile-menu-toggle span {
@@ -267,6 +270,15 @@ body {
   .slider-wrapper, .right-sidebar {
     width: 95%;
     margin: 10px auto;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .navbar ul {
+    width: 100%;
+    justify-content: center;
   }
 }
 
@@ -521,59 +533,81 @@ body {
 }
 
 @media (max-width: 768px) {
+  .navbar-container {
+    padding: 12px 0;
+    justify-content: center;
+    position: relative;
+  }
+  
   .mobile-menu-toggle {
     display: flex;
+    position: absolute;
+    left: 15px;
+    z-index: 1010;
   }
   
-  .navbar-container {
-    padding: 15px;
+  .site-logo {
+    position: relative;
+    z-index: 999;
   }
   
-  .navbar {
+  .search-icon {
+    position: absolute;
+    right: 15px;
+    z-index: 1010;
+  }
+  
+  #mainNavbar {
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    height: 0;
+    background-color: white;
+    z-index: 990;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    max-height: 0;
     overflow: hidden;
-    transition: height 0.3s ease;
-    padding: 0;
+    transition: max-height 0.3s ease;
   }
   
-  .navbar.active {
-    height: auto;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  #mainNavbar.active {
+    max-height: 80vh;
+    overflow-y: auto;
   }
   
   .navbar ul {
-    flex-direction: column;
+    width: 100%;
     padding: 0;
+    margin: 0;
   }
   
   .navbar li {
     width: 100%;
+    text-align: center;
     border-bottom: 1px solid #f1f1f1;
+  }
+  
+  .navbar li:last-child {
+    border-bottom: none;
   }
   
   .navbar a {
     padding: 15px;
-    text-align: left;
+    display: block;
   }
   
   .subGundem {
     position: static;
     width: 100%;
     box-shadow: none;
+    border-top: 1px solid #f1f1f1;
+    margin-top: 0;
     padding: 0;
   }
   
   .subGundem a {
     padding-left: 30px;
-    font-size: 0.8rem;
-  }
-  
-  .content-wrapper {
-    flex-direction: column;
+    background-color: #f9f9f9;
   }
   
   .slider-wrapper, .side-news {
@@ -584,17 +618,6 @@ body {
   
   .sticky-ad, .sticky-ad-right {
     display: none;
-  }
-  
-  .weather-card {
-    width: 100%;
-    margin: 20px 0;
-  }
-  
-  .navbar > ul > li:nth-child(3) > a::after,
-  .navbar > ul > li:nth-child(4) > a::after {
-    float: right;
-    margin-top: 5px;
   }
 }
 
