@@ -722,12 +722,8 @@ body {
     #mobileMenuToggle {
       display: flex;
       position: sticky;
-      top: 0;
-      left: 0;
-      z-index: 1001;
-      background-color: white;
       padding: 12px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    
     }
     
     #mainNavbar {
@@ -876,7 +872,7 @@ body {
   }
 
   .navbar li.active > .submenu {
-    display: block;
+    display: block !important;
   }
 
   .submenu a {

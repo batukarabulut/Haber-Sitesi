@@ -13,17 +13,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     const navItems = document.querySelectorAll(".navbar li");
 
     navItems.forEach((item) => {
-      item.addEventListener("click", (e) => {
-        if (window.innerWidth <= 768) {
-          // Her iki submenu tipini de kontrol et
-          const hasSubMenu = item.querySelector(".gundem-submenu") || item.querySelector(".ekonomi-submenu");
-          if (hasSubMenu) {
-            e.preventDefault(); // Sayfayı yukarı kaydırmasın
-            item.classList.toggle("active");
+        item.addEventListener("click", (e) => {
+          if (window.innerWidth <= 768) {
+            const hasSubMenu = item.querySelector(".submenu");
+            if (hasSubMenu) {
+              e.preventDefault(); // linke gitmesin
+              e.stopPropagation(); // 👈 ALTIN VURUŞ: bubbling’i durdurur
+              item.classList.toggle("active");
+            }
           }
-        }
-      });
+        });
     });
+      
     
     
     const ul = document.querySelector(".navbarEcon ul");
