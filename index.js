@@ -2,11 +2,41 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Mobil menü toggle fonksiyonu
     const mobileMenuToggle = document.getElementById("mobileMenuToggle");
     const mainNavbar = document.getElementById("mainNavbar");
+    const menuOverlay = document.getElementById("menuOverlay");
     
     if (mobileMenuToggle && mainNavbar) {
-        mobileMenuToggle.addEventListener("click", () => {
+        // Toggle menu when hamburger icon is clicked
+        mobileMenuToggle.addEventListener("click", (e) => {
+            e.stopPropagation(); // Prevent event from bubbling
             mobileMenuToggle.classList.toggle("active");
             mainNavbar.classList.toggle("active");
+            menuOverlay.classList.toggle("active");
+            document.body.style.overflow = mainNavbar.classList.contains("active") ? "hidden" : "";
+        });
+        
+        // Close menu when clicking on overlay
+        menuOverlay.addEventListener("click", () => {
+            mainNavbar.classList.remove("active");
+            mobileMenuToggle.classList.remove("active");
+            menuOverlay.classList.remove("active");
+            document.body.style.overflow = "";
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener("click", (e) => {
+            if (mainNavbar.classList.contains("active") && 
+                !mainNavbar.contains(e.target) && 
+                e.target !== mobileMenuToggle) {
+                mainNavbar.classList.remove("active");
+                mobileMenuToggle.classList.remove("active");
+                menuOverlay.classList.remove("active");
+                document.body.style.overflow = "";
+            }
+        });
+        
+        // Prevent clicks inside menu from closing it
+        mainNavbar.addEventListener("click", (e) => {
+            e.stopPropagation();
         });
     }
 
@@ -16,8 +46,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       item.addEventListener("click", (e) => {
         if (window.innerWidth <= 768) {
           e.stopPropagation();
-          e.preventDefault();
-          item.classList.toggle("active");
+          
+          // Only toggle submenu if there is one
+          const hasSubmenu = item.querySelector(".subGundem");
+          if (hasSubmenu) {
+            e.preventDefault();
+            item.classList.toggle("active");
+          }
         }
       });
     });
@@ -25,8 +60,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     const ul = document.querySelector(".navbarEcon ul");
 
-    const tickerTrack = document.createElement("div");
-    tickerTrack.classList.add("ticker-track");
     const financeUrl = "https://run.mocky.io/v3/2ac931e9-de50-47e8-b4d7-e707d7b554db";
 
 
