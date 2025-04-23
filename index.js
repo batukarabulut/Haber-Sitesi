@@ -9,6 +9,21 @@ document.addEventListener("DOMContentLoaded", async () => {
             mainNavbar.classList.toggle("active");
         });
     }
+
+    const navItems = document.querySelectorAll(".navbar li");
+
+    navItems.forEach((item) => {
+      item.addEventListener("click", (e) => {
+        if (window.innerWidth <= 768) {
+          const hasSubMenu = item.querySelector(".subGundem");
+          if (hasSubMenu) {
+            e.preventDefault(); // Sayfayı yukarı kaydırmasın
+            item.classList.toggle("active");
+          }
+        }
+      });
+    });
+    
     
     const ul = document.querySelector(".navbarEcon ul");
 

@@ -800,5 +800,63 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  .navbar {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 250px;
+    height: calc(100vh - 60px);
+    background-color: white;
+    padding: 20px;
+    z-index: 1000;
+    overflow-y: auto;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+  }
+
+  .navbar.active {
+    display: flex;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+  }
+
+  .navbar li {
+    width: 100%;
+    border-bottom: 1px solid #eee;
+  }
+
+  .navbar a {
+    width: 100%;
+    text-align: left;
+    padding: 12px 20px;
+  }
+
+  .subGundem {
+    display: none;
+    position: static;
+    box-shadow: none;
+    padding-left: 20px;
+    background-color: #f9f9f9;
+    width: 100%;
+  }
+
+  .navbar li.active > .subGundem {
+    display: block;
+  }
+
+  .subGundem a {
+    padding: 10px 15px;
+    font-size: 0.85rem;
+  }
+}
+
+
 
   
