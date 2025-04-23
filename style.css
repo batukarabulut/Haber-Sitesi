@@ -69,7 +69,7 @@ body {
 
 
 .subGundem {
-  display: none !important;
+  display: none;
   position: absolute;
   background-color: white;
   min-width: 160px;
@@ -84,7 +84,7 @@ body {
   .subGundem {
     position: static;
     display: none;
-    background-color: #f9f9f9;
+    background-color: #f5f5f5;
     width: 100%;
     padding-left: 0;
     border-top: 1px solid #eee;
@@ -104,9 +104,11 @@ body {
   position: relative;
 }
 
-
-.navbar li:hover > .subGundem {
-  display: block !important; 
+/* Masaüstünde hover ile göster */
+@media (min-width: 769px) {
+  .navbar li:hover > .subGundem {
+    display: block;
+  }
 }
 
 .subGundem a {
@@ -293,6 +295,10 @@ body {
   
   .mobile-menu-toggle {
     display: flex;
+    position: absolute;
+    left: 15px;
+    padding: 10px;
+    margin: 0;
   }
   
   .navbar ul {
@@ -557,12 +563,15 @@ body {
     top: 0;
     z-index: 1000;
     width: 100%;
+    padding: 15px 0;
   }
 
   .mobile-menu-toggle {
     display: flex;
     position: absolute;
     left: 15px;
+    padding: 10px;
+    margin: 0;
   }
 
   .site-logo {
@@ -585,7 +594,7 @@ body {
     height: 100vh;
     background-color: white;
     z-index: 1000;
-    padding-top: 60px;
+    padding-top: 70px;
     box-shadow: none;
     transition: left 0.3s ease;
     overflow-y: auto;
@@ -752,7 +761,7 @@ body {
         height: 100vh;
         background-color: white;
         z-index: 1000;
-        padding-top: 60px;
+        padding-top: 70px;
         box-shadow: none;
         transition: left 0.3s ease;
         overflow-y: auto;

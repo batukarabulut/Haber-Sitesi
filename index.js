@@ -40,28 +40,44 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
+    // Submenu işlemleri
     const navbarItems = document.querySelectorAll("#mainNavbar > ul > li");
 
     navbarItems.forEach(item => {
-      item.addEventListener("click", (e) => {
-        if (window.innerWidth <= 768) {
+      const hasSubmenu = item.querySelector(".subGundem");
+      if (hasSubmenu) {
+        const menuLink = item.querySelector("a");
+        
+        // Ana menü elementine tıklama işlevi
+        menuLink.addEventListener("click", (e) => {
+          e.preventDefault();
           e.stopPropagation();
           
-          // Only toggle submenu if there is one
-          const hasSubmenu = item.querySelector(".subGundem");
-          if (hasSubmenu) {
-            e.preventDefault();
-            item.classList.toggle("active");
-          }
-        }
-      });
+          // Diğer tüm açık menüleri kapat
+          navbarItems.forEach(otherItem => {
+            if (otherItem !== item && otherItem.classList.contains("active")) {
+              otherItem.classList.remove("active");
+            }
+          });
+          
+          // Tıklanan menüyü aç/kapat
+          item.classList.toggle("active");
+        });
+      }
     });
     
+    // Mobil görünümde submenu işlemleri (ayrı tutuyoruz)
+    document.addEventListener("click", (e) => {
+      // Menü dışına tıklandığında tüm açık alt menüleri kapat
+      if (!e.target.closest("#mainNavbar li")) {
+        navbarItems.forEach(item => {
+          item.classList.remove("active");
+        });
+      }
+    });
     
     const ul = document.querySelector(".navbarEcon ul");
-
     const financeUrl = "https://run.mocky.io/v3/2ac931e9-de50-47e8-b4d7-e707d7b554db";
-
 
     try{
         const response = await fetch(financeUrl);
