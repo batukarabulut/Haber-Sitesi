@@ -10,27 +10,20 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
-    const navItems = document.querySelectorAll(".navbar > ul > li");
+    const navItems = document.querySelectorAll(".navbar li");
 
     navItems.forEach((item) => {
-      const submenu = item.querySelector(".submenu");
-    
-      if (submenu) {
-        const link = item.querySelector("a"); // sadece üst link
-    
-        link.addEventListener("click", (e) => {
-          if (window.innerWidth <= 768) {
-            e.preventDefault(); // linke gitmesin
-            e.stopPropagation(); // bubbling engelle
-    
-            // Toggle işlemi sadece o item'da çalışsın
+      item.addEventListener("click", (e) => {
+        if (window.innerWidth <= 768) {
+          // Her iki submenu tipini de kontrol et
+          const hasSubMenu = item.querySelector(".gundem-submenu") || item.querySelector(".ekonomi-submenu");
+          if (hasSubMenu) {
+            e.preventDefault(); // Sayfayı yukarı kaydırmasın
             item.classList.toggle("active");
           }
-        });
-      }
+        }
+      });
     });
-    
-      
     
     
     const ul = document.querySelector(".navbarEcon ul");
