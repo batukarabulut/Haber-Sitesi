@@ -10,20 +10,26 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
-    const navItems = document.querySelectorAll(".navbar li");
+    const navItems = document.querySelectorAll(".navbar > ul > li");
 
     navItems.forEach((item) => {
-        item.addEventListener("click", (e) => {
+      const submenu = item.querySelector(".submenu");
+    
+      if (submenu) {
+        const link = item.querySelector("a"); // sadece üst link
+    
+        link.addEventListener("click", (e) => {
           if (window.innerWidth <= 768) {
-            const hasSubMenu = item.querySelector(".submenu");
-            if (hasSubMenu) {
-              e.preventDefault(); // linke gitmesin
-              e.stopPropagation(); // 👈 ALTIN VURUŞ: bubbling’i durdurur
-              item.classList.toggle("active");
-            }
+            e.preventDefault(); // linke gitmesin
+            e.stopPropagation(); // bubbling engelle
+    
+            // Toggle işlemi sadece o item'da çalışsın
+            item.classList.toggle("active");
           }
         });
+      }
     });
+    
       
     
     
