@@ -15,7 +15,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     navItems.forEach((item) => {
       item.addEventListener("click", (e) => {
         if (window.innerWidth <= 768) {
-          const hasSubMenu = item.querySelector(".subGundem");
+          // Her iki submenu tipini de kontrol et
+          const hasSubMenu = item.querySelector(".gundem-submenu") || item.querySelector(".ekonomi-submenu");
           if (hasSubMenu) {
             e.preventDefault(); // Sayfayı yukarı kaydırmasın
             item.classList.toggle("active");
