@@ -25,9 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
     });
     
-    
     const ul = document.querySelector(".navbarEcon ul");
-
     const tickerTrack = document.createElement("div");
     tickerTrack.classList.add("ticker-track");
     const financeUrl = "https://run.mocky.io/v3/2ac931e9-de50-47e8-b4d7-e707d7b554db";

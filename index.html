@@ -22,34 +22,38 @@
     </a>
   </div>
 
+  <!-- Mobile menu toggle button -->
+  <div class="mobile-menu-toggle" id="mobileMenuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  
   <!-- Navbar Container - Sticky -->
   <div class="navbar-container">
-    <!-- Mobile menu toggle button -->
-    <div class="mobile-menu-toggle" id="mobileMenuToggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
     <!-- Sticky Menü -->
     <nav class="navbar" id="mainNavbar">
       <ul>
           <li><a href="#">SON DAKİKA</a></li>
           <li><a href="#">YAZARLAR</a></li>
-          <li><a href="#">GÜNDEM</a>
-            <ul class="submenu gundem-submenu">
+          <li class="menu-item" id="gundem-item">
+            <a href="#">GÜNDEM</a>
+            <ul class="submenu" id="gundem-submenu">
               <li><a href="#">Amerika</a></li>
               <li><a href="#">Asya</a></li>
               <li><a href="#">Avrupa</a></li>
               <li><a href="#">Afrika</a></li>
             </ul>
-          </li>          
-          <li><a href="#">EKONOMİ</a>
-            <ul class="submenu ekonomi-submenu">
+          </li>
+          <li class="menu-item" id="ekonomi-item">
+            <a href="#">EKONOMİ</a>
+            <ul class="submenu" id="ekonomi-submenu">
               <li><a href="#">BIST</a></li>
               <li><a href="#">Kripto</a></li>
               <li><a href="#">Altın & Gümüş</a></li>
             </ul>
           </li>
+          
           <li><a href="#">DÜNYA</a></li>
           <li><a href="#">GÜNÜN İÇİNDEN</a></li>
           <li><a href="#">SPOR</a></li>
@@ -82,7 +86,7 @@
 
     <!-- Static newsCard -->
     <div class="side-news">
-      <a href="https://www.sozcu.com.tr/forbes-acikladi-dunyanin-en-zengin-kadinlari-belli-oldu-p160094">
+      <a target="_blank" href="https://www.sozcu.com.tr/forbes-acikladi-dunyanin-en-zengin-kadinlari-belli-oldu-p160094">
         <div class="news-card">
           <img src="https://sozcu01.sozcucdn.com/sozcu/production/uploads/images/2025/4/servettttjpg-FSh7soWugEq4YlRRjmUUjQ.jpg?w=776&h=436&mode=crop&scale=both" alt="Zengin Kadınlar">
           <h3>Dünyanın en zengin kadınları ve servetleri açıklandı</h3>

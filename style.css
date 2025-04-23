@@ -18,17 +18,22 @@ body {
 }
 
 .mobile-menu-toggle {
-  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  
+  z-index: 2000;
+  width: 30px;
+  height: 24px;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 30px;
-  height: 21px;
-  margin-right: 20px;
-  cursor: pointer;
-  z-index: 1001;
-  position: absolute;
-  left: 15px;
+  background-color: white;
+  padding: 8px;
+  border-radius: 4px;
 }
+
+
 
 .mobile-menu-toggle span {
   display: block;
@@ -51,6 +56,7 @@ body {
   transform: translateY(-9px) rotate(-45deg);
 }
 
+
 .navbar {
   background-color: white;
   padding: 12px 0;
@@ -65,6 +71,11 @@ body {
   overflow: visible; 
   display: flex;
   justify-content: center;
+}
+
+.navbar a:hover {
+  background-color:#f5f5f5;
+  transition: transform 0.5s ease-in-out;
 }
 
 .submenu, .gundem-submenu, .ekonomi-submenu {
@@ -95,6 +106,7 @@ body {
   text-align: left;
   font-weight: normal;
   border-bottom: 1px solid #f1f1f1;
+  border-radius: 10px;
 }
 
 .submenu li:last-child a,
@@ -606,6 +618,7 @@ body {
     border-top: 1px solid #f1f1f1;
     margin-top: 0;
     padding: 0;
+    display: none;
   }
   
   .submenu a {
@@ -872,7 +885,7 @@ body {
   }
 
   .navbar li.active > .submenu {
-    display: block !important;
+    display: block;
   }
 
   .submenu a {
@@ -880,6 +893,15 @@ body {
     font-size: 0.85rem;
   }
 }
+
+.submenu {
+  display: none;
+}
+
+.submenu.open {
+  display: block;
+}
+
 
 
 
