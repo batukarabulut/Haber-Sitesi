@@ -80,6 +80,26 @@ body {
   left: 0;
 }
 
+@media (max-width: 768px) {
+  .subGundem {
+    position: static;
+    display: none;
+    background-color: #f9f9f9;
+    width: 100%;
+    padding-left: 0;
+    border-top: 1px solid #eee;
+  }
+
+  .navbar li.active > .subGundem {
+    display: block;
+  }
+
+  .subGundem a {
+    padding-left: 30px;
+  }
+}
+
+
 .navbar li {
   position: relative;
 }
@@ -799,6 +819,13 @@ body {
     float: none;
   }
 }
+
+@media (min-width: 769px) {
+  #mobileMenuToggle {
+    display: none !important;
+  }
+}
+
 
 
   

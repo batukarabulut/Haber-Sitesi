@@ -9,6 +9,19 @@ document.addEventListener("DOMContentLoaded", async () => {
             mainNavbar.classList.toggle("active");
         });
     }
+
+    const navbarItems = document.querySelectorAll("#mainNavbar > ul > li");
+
+    navbarItems.forEach(item => {
+      item.addEventListener("click", (e) => {
+        if (window.innerWidth <= 768) {
+          e.stopPropagation();
+          e.preventDefault();
+          item.classList.toggle("active");
+        }
+      });
+    });
+    
     
     const ul = document.querySelector(".navbarEcon ul");
 
