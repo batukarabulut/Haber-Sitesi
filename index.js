@@ -40,40 +40,57 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
-    // Submenu işlemleri
-    const navbarItems = document.querySelectorAll("#mainNavbar > ul > li");
-
-    navbarItems.forEach(item => {
-      const hasSubmenu = item.querySelector(".subGundem");
-      if (hasSubmenu) {
-        const menuLink = item.querySelector("a");
-        
-        // Ana menü elementine tıklama işlevi
-        menuLink.addEventListener("click", (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          
-          // Diğer tüm açık menüleri kapat
-          navbarItems.forEach(otherItem => {
-            if (otherItem !== item && otherItem.classList.contains("active")) {
-              otherItem.classList.remove("active");
+    // Submenu işlemleri - tamamen yeniden yazıldı
+    const submenuLinks = document.querySelectorAll(".has-submenu > a");
+    
+    submenuLinks.forEach(link => {
+        link.addEventListener("click", function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const parentLi = this.parentElement;
+            const isActive = parentLi.classList.contains("active");
+            
+            // Mobil görünümde tüm active classlarını kaldır
+            if (window.innerWidth <= 768) {
+                const allActiveItems = document.querySelectorAll("#mainNavbar li.active");
+                allActiveItems.forEach(item => {
+                    if (item !== parentLi) {
+                        item.classList.remove("active");
+                    }
+                });
             }
-          });
-          
-          // Tıklanan menüyü aç/kapat
-          item.classList.toggle("active");
+            
+            // Bu öğenin active durumunu değiştir
+            parentLi.classList.toggle("active");
         });
-      }
     });
     
-    // Mobil görünümde submenu işlemleri (ayrı tutuyoruz)
+    // Sayfa yüklendiğinde veya pencere boyutu değiştiğinde alt menüleri kontrol et
+    function checkSubmenus() {
+        if (window.innerWidth > 768) {
+            // Masaüstü görünümünde active classlarını kaldır
+            const activeItems = document.querySelectorAll("#mainNavbar li.active");
+            activeItems.forEach(item => {
+                item.classList.remove("active");
+            });
+        }
+    }
+    
+    // Pencere boyutu değiştiğinde kontrol et
+    window.addEventListener("resize", checkSubmenus);
+    
+    // Sayfa yüklendiğinde kontrol et
+    checkSubmenus();
+    
+    // Menü dışına tıklandığında menüleri kapat
     document.addEventListener("click", (e) => {
-      // Menü dışına tıklandığında tüm açık alt menüleri kapat
-      if (!e.target.closest("#mainNavbar li")) {
-        navbarItems.forEach(item => {
-          item.classList.remove("active");
-        });
-      }
+        if (!e.target.closest("#mainNavbar")) {
+            const activeMenus = document.querySelectorAll("#mainNavbar li.active");
+            activeMenus.forEach(menu => {
+                menu.classList.remove("active");
+            });
+        }
     });
     
     const ul = document.querySelector(".navbarEcon ul");

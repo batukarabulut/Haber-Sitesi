@@ -15,6 +15,7 @@ body {
   align-items: center;
   position: relative;
   transition: transform 0.3s ease, background-color 0.3s ease;
+  margin-bottom: 10px; /* NavbarEcon ile arasına mesafe */
 }
 
 .mobile-menu-toggle {
@@ -67,6 +68,10 @@ body {
   justify-content: center;
 }
 
+/* Submenu styling */
+.has-submenu {
+  position: relative;
+}
 
 .subGundem {
   display: none;
@@ -81,6 +86,15 @@ body {
 }
 
 @media (max-width: 768px) {
+  .navbar-container {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    padding: 15px 0; /* Hamburger menü için daha fazla alan */
+    margin-bottom: 15px; /* NavbarEcon ile daha fazla mesafe */
+  }
+
   .subGundem {
     position: static;
     display: none;
@@ -98,7 +112,6 @@ body {
     padding-left: 30px;
   }
 }
-
 
 .navbar li {
   position: relative;
@@ -127,7 +140,6 @@ body {
   background-color: #f5f5f5;
 }
 
-
 .navbar a{
   color: black;
   text-decoration: none;
@@ -145,7 +157,8 @@ body {
   border-bottom: 1px solid #ccc;
   padding: 5px 0;
   width: 100%;
-  overflow: hidden;
+  overflow: hidden; /* Taşan içeriği gizle */
+  margin-top: 5px; /* Üstteki navbar-container ile mesafe */
 }
 
 .navbarEcon ul {
@@ -563,7 +576,8 @@ body {
     top: 0;
     z-index: 1000;
     width: 100%;
-    padding: 15px 0;
+    padding: 15px 0; /* Hamburger menü için daha fazla alan */
+    margin-bottom: 15px; /* NavbarEcon ile daha fazla mesafe */
   }
 
   .mobile-menu-toggle {
